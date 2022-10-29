@@ -46,14 +46,29 @@ Employe SaisirEmploye()
     return Employe {nom, prenom, resid, DN};
 }
 
-Employe SaisirEmploye(string nom, string prenom, Adresse resid, Date DN)
+bool AnneeNaissance(Employe emp, int annee)
 {
-    return Employe {nom, prenom, resid, DN};
+    if (emp.datenaissance.annee < annee)
+        return true;
+    return false;
 }
 
+bool VilleResidence(Employe EMP, string ville)
+{
+    return EMP.residence.ville == ville;
+}
 
 int main()
 {
     Employe Emp1 = SaisirEmploye();
+    cout << "\n\nVerification de naissance\n Inserez l'année > ";
+    int annee;
+    cin >> annee;
+    cout << AnneeNaissance(Emp1, annee);
+
+    cout << "\n\nVerification de residence\n Inserez la ville > ";
+    string ville;
+    cin >> ville;
+    cout << VilleResidence(Emp1, ville);
     return 0;
 }
